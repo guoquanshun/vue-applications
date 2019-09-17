@@ -1,12 +1,14 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router/index'
-import store from './store'
+import store from './store/index'
+
 import './registerServiceWorker'
-
 import './components/global';
+import plugins from './plugins/plugins';
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+Vue.use(plugins);
 
 new Vue({
   router,
