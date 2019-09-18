@@ -6,6 +6,7 @@
 
 <script>
 export default {
+    name: 'Child2',
     components:{},
     props:{},
     data(){
