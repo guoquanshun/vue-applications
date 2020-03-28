@@ -4,10 +4,11 @@ const plugins = {
     install: function(vue) {
         vue.mixin({
             created: function() {
-                if(this.$options.isVuex) {
+                const options = this.$options;
+                if(options.registerVuex && !this.$store.state[options.name]) {
                     // 动态引入必须给字符串，不能是变量
-                    import('../store/modules/' + this.$options.name).then(res => {
-                        this.$store.registerModule(this.$options.name, res.default);
+                    import('../store/modules/' + options.name).then(res => {
+                        this.$store.registerModule(options.name, res.default);
                     })
                 }
             }
