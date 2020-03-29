@@ -3,11 +3,12 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
-      <router-link to="/notificate">Notificate</router-link>
+      <router-link to="/notificate">Notificate</router-link> |
+      <router-link to="/tab">Tab</router-link>
     </div>
-    <transition name="fade">
+    <!-- <transition name="fade"> -->
       <router-view/>
-    </transition>
+    <!-- </transition> -->
   </div>
 </template>
 
