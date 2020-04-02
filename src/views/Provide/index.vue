@@ -31,7 +31,9 @@ export default {
     computed:{},
     methods:{},
     created(){},
-    mounted(){}
+    mounted(){
+      console.log(this);
+    }
 }
 </script>
 <style lang="less" scoped>
