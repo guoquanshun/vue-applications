@@ -7,15 +7,25 @@
     <div v-show="show" v-click-outside='onClickOutside'>
       hide me when click outside
     </div>
+    <br>
+    <div v-clampy="3">{{content}}</div>
   </div>
 </template>
 
 <script>
 import { VMoney } from 'v-money';
+import clampy from '@clampy-js/vue-clampy'
+import Vue from 'vue';
+
+Vue.use(clampy);
+
 export default {
   name: 'Home',
   registerVuex: true,
-  directives: {money: VMoney},
+  directives: {
+    clampy,
+    money: VMoney,
+  },
   data: () => {
     return {
         price: 12300000.45,
@@ -27,7 +37,8 @@ export default {
           precision: 2,
           masked: false /* doesn't work with directive */
         },
-        show: true
+        show: true,
+        content: 'Long text to clamp hereLong text to clamp hereLong text to clamp hereLong text to clamp hereLong text to clamp here'
     }
   },
   methods: {
@@ -37,6 +48,9 @@ export default {
     onClickOutside() {
       this.show = false
     }
+  },
+  mounted() {
+    console.log('this is ', this.$options.directives.clampy);
   }
 }
 </script>
