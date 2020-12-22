@@ -9,6 +9,7 @@
     </div>
     <br>
     <div v-clampy="3">{{content}}</div>
+    <RenderSlot v-if="renderFun" :renderFun="renderFun" />
   </div>
 </template>
 
@@ -16,6 +17,7 @@
 import { VMoney } from 'v-money';
 import clampy from '@clampy-js/vue-clampy'
 import Vue from 'vue';
+import RenderSlot from '../components/common/render-slot';
 
 Vue.use(clampy);
 
@@ -26,6 +28,7 @@ export default {
     clampy,
     money: VMoney,
   },
+  components: {RenderSlot},
   data: () => {
     return {
         price: 12300000.45,
@@ -47,7 +50,10 @@ export default {
     },
     onClickOutside() {
       this.show = false
-    }
+    },
+    renderFun() {
+      return <div>this is renderFun</div>
+    },
   },
   mounted() {
     console.log('this is ', this.$options.directives.clampy);
